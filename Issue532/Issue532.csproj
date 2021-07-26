@@ -23,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\SmsRouter.Core\SmsRouter.Core.csproj" />
     <ProjectReference Include="..\SmsRouter.EntityFramework\SmsRouter.EntityFramework.csproj" />
+    <ProjectReference Include="..\SmsRouter.GovNotify\SmsRouter.GovNotify.csproj" />
+    <ProjectReference Include="..\SmsRouter.Utrn\SmsRouter.Utrn.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
