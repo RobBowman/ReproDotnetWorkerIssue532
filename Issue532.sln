@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Issue532", "Issue532\Issue532.csproj", "{7EF8C925-5150-4973-84D0-B3094410E0E9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsRouter.Core", "SmsRouter.Core\SmsRouter.Core.csproj", "{6A5C3AAF-66C3-448F-91E3-151930FA2742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7EF8C925-5150-4973-84D0-B3094410E0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EF8C925-5150-4973-84D0-B3094410E0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EF8C925-5150-4973-84D0-B3094410E0E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

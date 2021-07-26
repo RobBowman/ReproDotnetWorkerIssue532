@@ -1,0 +1,163 @@
+---
+openapi: 3.0.0
+info:
+  title: SMS Routing Service
+  description: |
+    Routing service for SMS messages to be sent
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: rob.bowman@leeds.gov.uk
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: https://func-smsrouter-dev-001.azurewebsites.net/api/v1.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /message-status/{serviceRef}:
+    get:
+      summary: Pass the ServiceRef returned from a previous send request in order to retrieve current status
+      operationId: getStatus
+      parameters:
+      - name: serviceRef
+        in: path
+        description: ServiceRef of message for which status is required
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ok - status provided
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+  /template-sms:
+    post:
+      summary: Send one ore more SMS messages, using a template for content substitution
+      operationId: postTemplateSms
+      requestBody:
+        $ref: '#/components/requestBodies/TemplateSms'
+      responses:
+        "201":
+          description: ok - message(s) sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceRefResponse'
+        "405":
+          description: Unable to resolve templateName 'PaymentReceived'
+  /simple-sms:
+    post:
+      summary: Send one ore more SMS messages, passing whole message body
+      operationId: postSimpleSms
+      requestBody:
+        $ref: '#/components/requestBodies/SimpleSms'
+      responses:
+        "201":
+          description: ok - message(s) sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceRefResponse'
+        "405":
+          description: Invalid input
+components:
+  schemas:
+    ServiceRefResponse:
+      required:
+      - serviceRef
+      type: object
+      properties:
+        serviceRef:
+          type: string
+    StatusResponse:
+      required:
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: string
+          enum:
+          - Received
+          - Sent
+          - Faulted
+        errorMessage:
+          type: string
+    BaseFields:
+      type: object
+      properties:
+        tags:
+          type: array
+          example:
+          - housing
+          - payment
+          items:
+            type: string
+        businessArea:
+          type: string
+          example: HousingRents
+        callingSystem:
+          type: string
+          example: CouncilTaxSystem
+        callingSystemRef:
+          type: string
+          example: cts006475
+        targetPhoneNumber:
+          type: string
+          example: 07778 173xlf
+    TemplateSms:
+      required:
+      - callingSystem
+      - targetPhoneNumber
+      - templateId
+      type: object
+      properties:
+        requestConfig:
+          $ref: '#/components/schemas/BaseFields'
+        templateId:
+          type: string
+          example: a123679f-6176-4553-aec4-6a125e7f4e7b
+        templateParameters:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            FirstName: Borris
+            LastName: Johnson
+    SimpleSms:
+      required:
+      - callingSystem
+      - targetPhoneNumber
+      - templateId
+      type: object
+      properties:
+        requestConfig:
+          $ref: '#/components/schemas/BaseFields'
+        messageBody:
+          type: string
+          example: Service Update. Restoration of power to your building is expected within the next 90 minutes
+  requestBodies:
+    TemplateSms:
+      description: Details of Sms to be sent
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TemplateSms'
+      required: true
+    SimpleSms:
+      description: Details of Sms to be sent
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SimpleSms'
+      required: true
