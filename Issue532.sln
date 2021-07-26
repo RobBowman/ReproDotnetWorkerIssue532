@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Issue532", "Issue532\Issue5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsRouter.Core", "SmsRouter.Core\SmsRouter.Core.csproj", "{6A5C3AAF-66C3-448F-91E3-151930FA2742}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmsRouter.EntityFramework", "SmsRouter.EntityFramework\SmsRouter.EntityFramework.csproj", "{3EE5DC4A-FA1A-482F-A898-8D84BC599B92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A5C3AAF-66C3-448F-91E3-151930FA2742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EE5DC4A-FA1A-482F-A898-8D84BC599B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EE5DC4A-FA1A-482F-A898-8D84BC599B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EE5DC4A-FA1A-482F-A898-8D84BC599B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EE5DC4A-FA1A-482F-A898-8D84BC599B92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
