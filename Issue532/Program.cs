@@ -36,7 +36,7 @@ namespace SmsRouter.AzFunc
                     if (hostContext.HostingEnvironment.IsDevelopment())
                     {
                         builder.AddJsonFile(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "local.settings.json"));
-                        builder.AddUserSecrets<Program>();
+                        //builder.AddUserSecrets<Program>();
                     }
                 })
                 .ConfigureServices(s =>
@@ -44,21 +44,21 @@ namespace SmsRouter.AzFunc
                     var configuration = s.BuildServiceProvider()
                         .GetRequiredService<IConfiguration>();
 
-                    s.AddUtrnServices(configuration.GetSection("SmsRouter:Utrn").Bind);
-                    s.AddGovNotifySvcHttpClient(configuration.GetSection("SmsRouter:GovNotify").Bind);
+                    //s.AddUtrnServices(configuration.GetSection("SmsRouter:Utrn").Bind);
+                    //s.AddGovNotifySvcHttpClient(configuration.GetSection("SmsRouter:GovNotify").Bind);
                     s.AddDbContext<SmsOrderContext>(options =>
                     {
                         options.UseSqlServer(configuration.GetConnectionString("SmsRouter"));
                     });
 
-                    s.AddSwaggerDocument();
+                    //s.AddSwaggerDocument();
 
                 })
                 .Build();
-                var context = host.Services.GetRequiredService<SmsOrderContext>();
-                var loggingConfig = new LoggingConfig();
-                var configuration = host.Services.GetRequiredService<IConfiguration>();
-                loggingConfig.Configure(configuration.GetConnectionString("SmsRouter"));
+                //var context = host.Services.GetRequiredService<SmsOrderContext>();
+                //var loggingConfig = new LoggingConfig();
+                //var configuration = host.Services.GetRequiredService<IConfiguration>();
+                //loggingConfig.Configure(configuration.GetConnectionString("SmsRouter"));
 
                 host.Run();
             }
